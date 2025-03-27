@@ -6,6 +6,10 @@
 
 A flexible, type-safe struct generator for Ruby that automatically infers and creates Ruby Struct-like classes from arbitrary data sources with runtime type validation.
 
+## Why Ruckt?
+
+Ruckt combines the flexibility of Ruby's OpenStruct with the explicit structure and performance benefits of native Struct, giving you auto-generated, type-safe data objects directly from your hashes and JSON payloads. Unlike OpenStruct, Ruckt enforces attribute types for safety, and unlike traditional Struct, it dynamically adapts to nested data structures without manual boilerplate. 
+
 ## Features
 
 - Dynamic Struct Generation: Classes auto-created from hashes/data samples
