@@ -66,7 +66,7 @@ RSpec.describe Ruckt do
       let(:data) do
         {
           name: "Dave",
-          location: { 
+          location: {
             city: "Sheffield",
             postcode: "S2",
             coords: {
@@ -109,7 +109,7 @@ RSpec.describe Ruckt do
       let(:data) do
         {
           name: "Dave",
-          hobbies: ["coding", "reading"],
+          hobbies: %w[coding reading],
           scores: [1, 2, 3]
         }
       end
@@ -118,19 +118,21 @@ RSpec.describe Ruckt do
 
       # Verify arrays are stored and retrieved correctly
       it "handles array attributes" do
-        expect(instance.hobbies).to eq(["coding", "reading"])
+        expect(instance.hobbies).to eq(%w[coding reading])
         expect(instance.scores).to eq([1, 2, 3])
       end
 
       # Verify type validation for array attributes
       it "validates array type" do
-        expect { instance.hobbies = "not an array" }.to raise_error(TypeError, /Expected hobbies to be Array, got String/)
+        expect do
+          instance.hobbies = "not an array"
+        end.to raise_error(TypeError, /Expected hobbies to be Array, got String/)
       end
 
       # Verify that arrays can be modified in place
       it "allows modifying arrays" do
         instance.hobbies << "gaming"
-        expect(instance.hobbies).to eq(["coding", "reading", "gaming"])
+        expect(instance.hobbies).to eq(%w[coding reading gaming])
       end
     end
 
@@ -192,20 +194,20 @@ RSpec.describe Ruckt do
       it "handles updating with invalid nested data" do
         struct_class = described_class.new({ location: { city: "Sheffield" } })
         instance = struct_class.new(location: { city: "Sheffield" })
-        
-        expect { 
-          instance.location = { city: 123 } 
-        }.to raise_error(TypeError, /Expected city to be String, got Integer/)
+
+        expect do
+          instance.location = { city: 123 }
+        end.to raise_error(TypeError, /Expected city to be String, got Integer/)
       end
 
       # Verify that nested structures can reference each other
       it "handles inheritance in nested structs" do
         parent_data = { name: "Parent" }
         child_data = { name: "Child", parent: parent_data }
-        
+
         struct_class = described_class.new(child_data)
         instance = struct_class.new(child_data)
-        
+
         expect(instance.name).to eq("Child")
         expect(instance.parent.name).to eq("Parent")
       end

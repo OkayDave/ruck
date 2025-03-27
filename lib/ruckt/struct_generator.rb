@@ -49,14 +49,14 @@ module Ruckt
             @type_info[key] = infer_type(value)
 
             # Define a getter method that returns the instance variable
-            define_method(key) do 
+            define_method(key) do
               instance_variable_get("@#{key}")
             end
 
             # Define a setter method with type validation
             define_method("#{key}=") do |val|
               # Special handling for nested hash updates
-              if val.is_a?(Hash) && self.class.type_info[key].is_a?(Class) && 
+              if val.is_a?(Hash) && self.class.type_info[key].is_a?(Class) &&
                  self.class.type_info[key].respond_to?(:type_info)
                 # Create a temporary instance to validate the nested data
                 # This ensures all nested values have correct types
@@ -71,7 +71,7 @@ module Ruckt
                 instance_variable_set("@#{key}", val)
               end
             end
-            
+
             # For boolean attributes, add a convenience query method
             # that ends with '?' (e.g., active?)
             if value.is_a?(TrueClass) || value.is_a?(FalseClass)
@@ -111,17 +111,19 @@ module Ruckt
       # @raise [TypeError] If the value doesn't match the expected type
       def validate_type(key, value)
         expected_type = self.class.type_info[key]
-        
+
         # Handle cases where multiple types are allowed (e.g., true/false)
         if expected_type.is_a?(Array)
           return if expected_type.any? { |type| value.is_a?(type) }
-          raise TypeError, "Expected #{key} to be one of #{expected_type.join(', ')}, got #{value.class}"
+
+          raise TypeError, "Expected #{key} to be one of #{expected_type.join(", ")}, got #{value.class}"
         end
 
         # Handle single type validation
         return if value.is_a?(expected_type)
+
         raise TypeError, "Expected #{key} to be #{expected_type}, got #{value.class}"
       end
     end
   end
-end 
+end

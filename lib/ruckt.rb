@@ -11,4 +11,4 @@ module Ruckt
       StructGenerator.generate(data)
     end
   end
-end 
+end
