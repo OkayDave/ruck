@@ -1,8 +1,7 @@
 # Ruck
 
 [![Gem Version](https://badge.fury.io/rb/ruck.svg)](https://badge.fury.io/rb/ruck)
-[![Build Status](https://github.com/dave/ruck/workflows/CI/badge.svg)](https://github.com/dave/ruck/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/your-badge/maintainability)](https://codeclimate.com/github/dave/ruck/maintainability)
+[![RSpec](https://github.com/OkayDave/ruck/actions/workflows/rspec.yml/badge.svg)](https://github.com/OkayDave/ruck/actions/workflows/rspec.yml)
 [![Coverage Status](https://coveralls.io/repos/github/dave/ruck/badge.svg?branch=main)](https://coveralls.io/github/dave/ruck?branch=main)
 
 A flexible, type-safe struct generator for Ruby that automatically infers and creates Ruby Struct-like classes from arbitrary data sources with runtime type validation.
@@ -49,8 +48,7 @@ data = {
   active: true
 }
 
-User = Ruck.new(data)
-user = User.new(data)
+user = Ruck.new(data)
 
 # Access attributes
 user.name      # => "Dave"
@@ -73,8 +71,7 @@ data = {
   }
 }
 
-Person = Ruck.new(data)
-person = Person.new(data)
+person = Ruck.new(data)
 
 # Access nested attributes
 person.location.city      # => "Sheffield"
