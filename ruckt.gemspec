@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative "lib/ruck/version"
+require_relative "lib/ruckt/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "ruck"
-  spec.version = Ruck::VERSION
+  spec.name = "ruckt"
+  spec.version = Ruckt::VERSION
   spec.authors = ["Dave Russell"]
   spec.email = ["dave.kerr@gmail.com"]
 
   spec.summary = "A flexible, type-safe struct generator for Ruby"
   spec.description = "Automatically infer and create Ruby Struct-like classes from arbitrary data sources with runtime type validation"
-  spec.homepage = "https://github.com/dave/ruck"
+  spec.homepage = "https://github.com/dave/ruckt"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 

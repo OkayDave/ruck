@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "ruck/version"
-require_relative "ruck/struct_generator"
+require_relative "ruckt/version"
+require_relative "ruckt/struct_generator"
 
-module Ruck
+module Ruckt
   class Error < StandardError; end
 
   class << self
@@ -11,4 +11,4 @@ module Ruck
       StructGenerator.generate(data)
     end
   end
-end
+end 

@@ -4,10 +4,10 @@
 require "date"
 require "time"
 
-RSpec.describe Ruck do
+RSpec.describe Ruckt do
   # Basic sanity check to ensure the gem has a version number
   it "has a version number" do
-    expect(Ruck::VERSION).not_to be nil
+    expect(Ruckt::VERSION).not_to be nil
   end
 
   describe ".new" do

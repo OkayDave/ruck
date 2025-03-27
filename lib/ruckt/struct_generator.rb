@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Ruck
+module Ruckt
   # The StructGenerator class is responsible for dynamically creating struct-like classes
   # from hash data. It provides type safety and validation while maintaining a simple interface.
   class StructGenerator

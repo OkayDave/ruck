@@ -1,4 +1,4 @@
-# Ruck
+# Ruckt
 
 [![Gem Version](https://badge.fury.io/rb/ruck.svg)](https://badge.fury.io/rb/ruck)
 [![RSpec](https://github.com/OkayDave/ruck/actions/workflows/rspec.yml/badge.svg)](https://github.com/OkayDave/ruck/actions/workflows/rspec.yml)
@@ -19,7 +19,7 @@ A flexible, type-safe struct generator for Ruby that automatically infers and cr
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ruck'
+gem 'ruckt'
 ```
 
 And then execute:
@@ -31,7 +31,7 @@ $ bundle install
 Or install it yourself as:
 
 ```bash
-$ gem install ruck
+$ gem install ruckt
 ```
 
 ## Usage
@@ -39,7 +39,7 @@ $ gem install ruck
 ### Basic Example
 
 ```ruby
-require 'ruck'
+require 'ruckt'
 
 # Create a struct from a hash
 data = {
@@ -48,7 +48,7 @@ data = {
   active: true
 }
 
-user = Ruck.new(data)
+user = Ruckt.new(data)
 
 # Access attributes
 user.name      # => "Dave"
@@ -71,7 +71,7 @@ data = {
   }
 }
 
-person = Ruck.new(data)
+person = Ruckt.new(data)
 
 # Access nested attributes
 person.location.city      # => "Sheffield"
