@@ -1,43 +1,101 @@
 # Ruck
 
-TODO: Delete this and the text below, and describe your gem
+[![Gem Version](https://badge.fury.io/rb/ruck.svg)](https://badge.fury.io/rb/ruck)
+[![Build Status](https://github.com/dave/ruck/workflows/CI/badge.svg)](https://github.com/dave/ruck/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/your-badge/maintainability)](https://codeclimate.com/github/dave/ruck/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/dave/ruck/badge.svg?branch=main)](https://coveralls.io/github/dave/ruck?branch=main)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ruck`. To experiment with that code, run `bin/console` for an interactive prompt.
+A flexible, type-safe struct generator for Ruby that automatically infers and creates Ruby Struct-like classes from arbitrary data sources with runtime type validation.
+
+## Features
+
+- Dynamic Struct Generation: Classes auto-created from hashes/data samples
+- Type Safety: Runtime type validation for all attributes
+- Nested Structures: Automatic handling of nested hashes
+- Query Methods: Automatic boolean attribute methods (e.g., `active?`)
+- Clear Error Messages: Descriptive errors for type mismatches
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add this line to your application's Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
-
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+```ruby
+gem 'ruck'
 ```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+And then execute:
 
 ```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+$ bundle install
+```
+
+Or install it yourself as:
+
+```bash
+$ gem install ruck
 ```
 
 ## Usage
 
-TODO: Write usage instructions here
+### Basic Example
+
+```ruby
+require 'ruck'
+
+# Create a struct from a hash
+data = {
+  name: "Dave",
+  age: 40,
+  active: true
+}
+
+User = Ruck.new(data)
+user = User.new(data)
+
+# Access attributes
+user.name      # => "Dave"
+user.age       # => 40
+user.active?   # => true
+
+# Set attributes
+user.name = "John"  # => works fine
+user.age = "forty"  # => raises TypeError
+```
+
+### Nested Structures
+
+```ruby
+data = {
+  name: "Dave",
+  location: {
+    city: "Sheffield",
+    postcode: "S2"
+  }
+}
+
+Person = Ruck.new(data)
+person = Person.new(data)
+
+# Access nested attributes
+person.location.city      # => "Sheffield"
+person.location.postcode  # => "S2"
+
+# Type validation works for nested structures too
+person.location.city = 123  # => raises TypeError
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bundle install` to install dependencies. Then, run `rake spec` to run the tests.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
+
+Please ensure that any additions are fully covered by RSpec.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ruck. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/ruck/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/dave/ruck.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Ruck project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/ruck/blob/master/CODE_OF_CONDUCT.md).
