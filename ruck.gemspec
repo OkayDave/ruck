@@ -5,8 +5,8 @@ require_relative "lib/ruck/version"
 Gem::Specification.new do |spec|
   spec.name = "ruck"
   spec.version = Ruck::VERSION
-  spec.authors = ["Dave"]
-  spec.email = ["dave@example.com"]
+  spec.authors = ["Dave Russell"]
+  spec.email = ["dave.kerr@gmail.com"]
 
   spec.summary = "A flexible, type-safe struct generator for Ruby"
   spec.description = "Automatically infer and create Ruby Struct-like classes from arbitrary data sources with runtime type validation"
