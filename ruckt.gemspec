@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "A flexible, type-safe struct generator for Ruby"
   spec.description = "Automatically infer and create Ruby Struct-like classes from arbitrary data sources with runtime type validation"
-  spec.homepage = "https://github.com/dave/ruckt"
+  spec.homepage = "https://github.com/OkayDave/ruckt"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
